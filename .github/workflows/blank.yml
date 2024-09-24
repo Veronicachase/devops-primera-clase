@@ -33,7 +33,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   deploy:
-  runs-on:ubuntu-latest
-   steps:
+    runs-on: ubuntu-latest
+    steps:
    - name: Deployment
    run: echo "Hola, yo soy el job que despliega la API"
