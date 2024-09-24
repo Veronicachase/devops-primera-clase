@@ -1,39 +1,41 @@
-# This is a basic workflow to help you get started with Actions
+# Este es un workflow básico para ayudarte a comenzar con GitHub Actions
 
 name: CI
 
-# Controls when the workflow will run
+# Controla cuándo se ejecutará el workflow
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Ejecuta el workflow en eventos de push o pull request en la rama "main"
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Permite ejecutar este workflow manualmente desde la pestaña Actions
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Un workflow está compuesto de uno o más jobs que pueden ejecutarse secuencialmente o en paralelo
 jobs:
-  # This workflow contains a single job called "build"
+  # Este workflow contiene un job llamado "build"
   build:
-    # The type of runner that the job will run on
+    # El tipo de runner en el que se ejecutará el job
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # Pasos que se ejecutarán como parte del job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Descarga tu repositorio en $GITHUB_WORKSPACE para que los pasos puedan acceder a él
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      
-      # Runs a set of commands using the runners shell
+      # Ejecuta un conjunto de comandos
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+  # Este es el nuevo job llamado "deploy"
   deploy:
     runs-on: ubuntu-latest
+
+    # Pasos para el job deploy
     steps:
-   - name: Deployment
-   run: echo "Hola, yo soy el job que despliega la API"
+      - name: Deployment
+        run: echo "Hola, yo soy el job que despliega la API"
