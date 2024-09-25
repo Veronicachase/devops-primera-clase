@@ -9,10 +9,17 @@ on:
   workflow_dispatch:
 
 jobs:
+  # Este workflow contiene un job llamado "build"
   build:
+    # El tipo de runner en el que se ejecutará el job
     runs-on: ubuntu-latest
+
+    # Pasos que se ejecutarán como parte del job
     steps:
+      # Descarga tu repositorio en $GITHUB_WORKSPACE para que los pasos puedan acceder a él
       - uses: actions/checkout@v4
+
+      # Ejecuta un conjunto de comandos
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
@@ -22,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deployment
-        run: echo "Hola, yo soy el job que despliega la API"
+        run: echo "Hola"
 
   clonar:
     runs-on: ubuntu-latest
@@ -32,18 +39,13 @@ jobs:
 
   instalar:
     runs-on: ubuntu-latest
+    steps:
       - name: Instalar dependencias
-    steps:
-      run: |
-          cd back
-          npm install
+        run: |
+            cd back
+            npm install
 
-  saludar:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Saludar
-        run: echo "Hola"
-
+  
   testear:
     runs-on: ubuntu-latest
     steps:
