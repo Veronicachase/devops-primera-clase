@@ -6,9 +6,9 @@ name: CI
 on:
   # Ejecuta el workflow en eventos de push o pull request en la rama "main"
   push:
-    branches: [ "main" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
   # Permite ejecutar este workflow manualmente desde la pestaña Actions
   workflow_dispatch:
