@@ -33,8 +33,9 @@ jobs:
   instalar:
     runs-on: ubuntu-latest
     steps:
-      - name: Instalar dependencias
-        run: npm install
+      run: |
+          cd back
+          npm install
 
   saludar:
     runs-on: ubuntu-latest
@@ -46,4 +47,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ejecutar tests
-        run: npm run test
+        run: |
+          cd back
+          npm run test
