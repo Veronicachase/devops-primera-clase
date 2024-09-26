@@ -30,7 +30,7 @@ jobs:
 
       # Mensaje informativo
       - name: Hola desde mailService
-        run: echo "Pruebas completadas para mailService"
+        run: echo "Pruebas completadas para mailService, hola"
 
   userService:
     runs-on: ubuntu-latest
