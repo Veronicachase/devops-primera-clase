@@ -1,55 +1,58 @@
 name: CI
 
 on:
- 
   push:
-    branches: [ "develop" ]
+    branches: ["develop"]
   pull_request:
-    branches: [ "develop" ]
+    branches: ["develop"]
   workflow_dispatch:
 
 jobs:
-  # Este workflow contiene un job llamado "build"
-  build:
-    # El tipo de runner en el que se ejecutará el job
+  mailService:
     runs-on: ubuntu-latest
-
-    # Pasos que se ejecutarán como parte del job
     steps:
-      # Descarga tu repositorio en $GITHUB_WORKSPACE para que los pasos puedan acceder a él
-      - uses: actions/checkout@v4
-
-      # Ejecuta un conjunto de comandos
-      - name: Run a multi-line script
+      # Descargar el código del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+      # Instalar dependencias de mailService
+      - name: Instalar dependencias mailService
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cd mailService
+          npm install
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deployment
-        run: echo "Hola"
-
-  clonar:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clonar
-        run: git clone --branch develop  https://github.com/Veronicachase/devops-primera-clase.git
-
-  instalar:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Instalar dependencias
+      # Ejecutar tests en mailService
+      - name: Ejecutar tests mailService
         run: |
-            cd back
-            npm install
-
-  
-  testear:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ejecutar tests
-        run: |
-          cd back
+          cd mailService
           npm run test
+
+      # Mensaje informativo
+      - name: Hola desde mailService
+        run: echo "Pruebas completadas para mailService"
+
+  userService:
+    runs-on: ubuntu-latest
+    steps:
+      # Descargar el código del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      # Instalar dependencias de userService
+      - name: Instalar dependencias userService
+        run: |
+          cd userService
+          npm install
+
+      # Ejecutar tests en userService
+      - name: Ejecutar tests userService
+        run: |
+          cd userService
+          npm run test
+
+      # Mensaje informativo
+      - name: Hola desde userService
+        run: echo "Pruebas completadas para userService"
