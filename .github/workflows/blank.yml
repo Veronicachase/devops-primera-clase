@@ -23,9 +23,9 @@ jobs:
           npm install
 
       # Ejecutar tests en mailService
-      - name: Ejecutar tests mailService
+      - name: Ejecutar tests 
         run: |
-          cd mailService
+          cd src
           npm run test
 
       # Mensaje informativo
