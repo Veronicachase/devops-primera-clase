@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    name: mi-primer-cicd-completo
+    name: mi-primer-cicd-completo-bitter-wind-624
     runs-on: ubuntu-latest
     concurrency: deploy-group  # optional: ensure only one action runs at a time
     steps:
