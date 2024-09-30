@@ -5,7 +5,7 @@ app.use(express.json());
 
 // Ruta básica
 app.get('/', (req, res) => {
-    res.status(200).json({ message: 'Hello, we are devopsss'});
+    res.status(200).json({ message: 'Hello, we are devops'});
 });
 
 // Ruta de ejemplo para pruebas
