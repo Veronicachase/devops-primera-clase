@@ -17,33 +17,3 @@ Los pasos a seguir son los siguientes:
     9) Listo lo tenemos todo.
 
 
-
-name: Fly Deploy
-
-on:
-  push:
-    branches: 
-      - CICD
-  pull_request:
-    branches: ["CICD"]
-  workflow_dispatch:
-
-jobs:
-  deploy:
-    name: mi-primer-cicd-completo-bitter-wind-624
-    runs-on: ubuntu-latest
-    concurrency: deploy-group  # optional: ensure only one action runs at a time
-    steps:
-      - uses: actions/checkout@v4
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Instalar dependencias
-        run: npm install
-      - name: Ejecutar tests
-        run: |
-          cd tests
-          npm run test
-      - run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-      - name: Hola desde cicd
-        run: echo "Pruebas completadas cicd"
