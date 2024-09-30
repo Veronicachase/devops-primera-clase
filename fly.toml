@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for mi-primer-cicd-completo-falling-water-4924 on 2024-09-30T17:33:14+02:00
+# fly.toml app configuration file generated for mi-primer-cicd-completo-bitter-wind-624 on 2024-09-30T18:11:57+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'mi-primer-cicd-completo-falling-water-4924'
+app = 'mi-primer-cicd-completo-bitter-wind-624'
 primary_region = 'mad'
 
 [build]
