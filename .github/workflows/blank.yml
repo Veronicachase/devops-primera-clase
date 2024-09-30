@@ -1,58 +1,58 @@
-name: CI
+# name: CI
 
-on:
-  push:
-    branches: ["develop"]
-  pull_request:
-    branches: ["develop"]
-  workflow_dispatch:
+# on:
+#   push:
+#     branches: ["CICD"]
+#   pull_request:
+#     branches: ["CICD"]
+#   workflow_dispatch:
 
-jobs:
-  mailService:
-    runs-on: ubuntu-latest
-    steps:
-      # Descargar el código del repositorio
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: develop
+# jobs:
+#   mailService:
+#     runs-on: ubuntu-latest
+#     steps:
+#       # Descargar el código del repositorio
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           ref: develop
       # Instalar dependencias de mailService
-      - name: Instalar dependencias mailService
-        run: |
-          cd mailService
-          npm install
+      # - name: Instalar dependencias mailService
+      #   run: |
+      #     cd mailService
+      #     npm install
 
       # Ejecutar tests en mailService
-      - name: Ejecutar tests 
-        run: |
-          cd src
-          npm run test
+      # - name: Ejecutar tests 
+      #   run: |
+      #     cd Tests
+      #     npm run test
 
       # Mensaje informativo
-      - name: Hola desde mailService
-        run: echo "Pruebas completadas para mailService, hola"
+      # - name: Hola desde mailService
+      #   run: echo "Pruebas completadas para nueva rama CICD, "
 
-  userService:
-    runs-on: ubuntu-latest
-    steps:
-      # Descargar el código del repositorio
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: develop
+  # userService:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # Descargar el código del repositorio
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: CICD
 
       # Instalar dependencias de userService
-      - name: Instalar dependencias userService
-        run: |
-          cd userService
-          npm install
+      # - name: Instalar dependencias userService
+      #   run: |
+      #     cd userService
+      #     npm install
 
       # Ejecutar tests en userService
-      - name: Ejecutar tests userService
-        run: |
-          cd userService
-          npm run test
+      # - name: Ejecutar tests userService
+      #   run: |
+      #     cd userService
+      #     npm run test
 
       # Mensaje informativo
-      - name: Hola desde userService
-        run: echo "Pruebas completadas para userService"
+      # - name: Hola desde cicd
+      #   run: echo "Pruebas completadas cicd"

@@ -5,7 +5,7 @@ app.use(express.json());
 
 // Ruta básica
 app.get('/', (req, res) => {
-    res.status(200).json({ message: 'Hello World from mi casa!' });
+    res.status(200).json({ message: 'Hello World from fly.io!' });
 });
 
 // Ruta de ejemplo para pruebas
