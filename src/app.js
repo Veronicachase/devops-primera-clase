@@ -5,7 +5,7 @@ app.use(express.json());
 
 // Ruta básica
 app.get('/', (req, res) => {
-    res.status(200).json({ message:'Hello, we are devops'});
+    res.status(200).json({ message:'Si estas viendo esto es porque se ha subido correctamente a fly.io'});
 });
 
 // Ruta de ejemplo para pruebas

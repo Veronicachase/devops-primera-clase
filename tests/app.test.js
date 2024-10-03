@@ -2,10 +2,10 @@ const request = require('supertest');
 const app = require('../src/app');
 
 describe('API Tests', () => {
-    it('should return Hello, we are devops on GET /', async () => {
+    it('should return Si estas viendo esto es porque se ha subido correctamente a fly.io on GET /', async () => {
         const response = await request(app).get('/');
         expect(response.status).toBe(200);
-        expect(response.body.message).toBe('Hello, we are devops');
+        expect(response.body.message).toBe('Si estas viendo esto es porque se ha subido correctamente a fly.io');
     });
 
     it('should echo back the posted data on POST /echo', async () => {
