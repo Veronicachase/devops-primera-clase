@@ -20,7 +20,6 @@ pipeline {
                 echo 'Installing Fly.io...'
                 withCredentials([string(credentialsId: 'FLY_API_TOKEN', variable: 'FLY_API_TOKEN')]) {
                     sh '''
-                        # Instalar flyctl si no está ya disponible
                         curl -L https://fly.io/install.sh | sh
                         export FLYCTL_INSTALL="/var/jenkins_home/.fly"
                         export PATH="$FLYCTL_INSTALL/bin:$PATH"
