@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Pintar credencial'){
             steps{
-                echo 'Hola esta es mi credencial: $FLY_API_TOKEN'
+                echo 'Hola esta es mi credencial: $FLY_API_TOKEN_TEST'
             }
         }
  
