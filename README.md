@@ -1,19 +1,21 @@
 # devops-primera-clase
 This is my readme, Ill do it later. 
 
-Desde nuestro cliente se nos pide que la 'SUPERAPI' que tenemos desarrollada sea desplegada siempre que se haga un push a la rama 'CICD'. La API debe ser desplegada en nuestro proyecto de fly.io para que cumpla con nuestros requisitos. La aplicación en fly.io NO está creada, por lo que debemos crear una nueva aplicación con fly.io. Recordad que tenemos el comando 'fly launch' para crear una aplicación nueva.
- 
-Los pasos a seguir son los siguientes:
- 
-    1) Necesitamos crear una nueva rama que se llame CICD
-    2) Necesitamos eliminar todo lo que hay excepto la carpeta .github y su contenido. IMPORTANTE ESTAR EN LA RAMA CICD antes de eliminar nada.
-    3) Debemos pegar el proyecto base que tenemos desde el primer día que está compuesto por la carpeta src y test y los archivos jest.config.js, package.json y README.md. (Si venimos desde la rama flyio del otro día lo que debemos hacer es eliminar los siguinetes archivos: .dockerignore, Dockerfile, fly.toml y fly-deploy.yml[que está en .github/workflows])
-    4) Debemos primero crear nuestra aplicación en fly.io(No deberíamos necesitar token ya ni configuraciones 'extrañas') la aplicación debería llamarse 'mi-primer-cicd-completo'. Recordad usar 'fly launch' para crear la aplicación.
-    5) Con el paso 4 se crea un fly-deploy.yml, y usamos este para introducir los pasos necesarios para que este 'programita' ejecute las acciones necesarias para hacer CI(Integración continua). Las acciones que debemos hacer son:
-        5.1) Checkout del codigo, instalación de dependencias y ejecución de test.
-    6) Hacer que fly-deploy.yml SOLO se ejecute cuando haya cambios en mi nueva rama llamada 'CICD'
-    7) Hacer un cambio 'tonto' en el repositorio en la rama CICD y comprobar que esto ejecuta el Gitaction y despliega todo correctamente en fly.io.
-    8) Vamos a modificar el texto 'Hello World from fly.io!' del archivo app.js por 'Hello, we are devops'
-    9) Listo lo tenemos todo.
+enunciado de tarea de hoy 
 
-
+La práctica va a consistir en realizar un CI/CD completo con Jenkins configurando todo desde el Jenkinsfile. (Se deben ejecutar los test, el despliegue en Fly.io y todos los pasos que consideréis necesarios...)
+Es importante tener en cuenta que, como ocurría con GitActions, tenemos 'secrets' en jenkins que se llaman 'credenciales'(credentials). Estos son usados para salvaguardar información sensible que será usada con algún objetivo. Debemos usarlos obteniendo cada credencial desde el propio jenkins a través del Jenkinsfile.
+ 
+Pasos: 
+    1) Tener una rama nueva en mi repo que se llame flyio (o crear un nuevo repo) 
+        1.2) Crear mi aplicación en fly.io con el comando 'fly launch' y comprobar que se despliegua correctamente. (Si no se despliega con el launch, usar justo después el comando 'fly deploy'
+    2) Configurar el webhook para que se conecte al Jenkins
+    3) Configurar mi job en jenkins con Pipeline como template
+    4) Configurar las credenciales a nivel de Jenkins para poder acceder a ellas desde el Jenkins
+        4.1) Nombre de la credencial: ${MOTIVO}_${NOMBRE_DE_LA_PERSONA}
+    5) Configurar el Jenkinsfile de mi repo para que obtenga las credenciales desde Jenkins
+    6) Os aconsejaría que hicierais una prueba con un echo par comprobar que la credencial se obtiene correctamente. 
+    7) Configurar CI
+    8) Configurar CD
+    9) Ejecutar pipeline completo y comprobar que despliega en Fly.io
+    10) Hacer un cambio en el código y comprobar que se ejecuta el job de jenkins y que se despliega ese cambio correctamente en Fly.io(Si falla algún test, corregirlo)
