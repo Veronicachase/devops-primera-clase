@@ -2,7 +2,7 @@ pipeline {
     agent any
  
     environment {
-        credentials('FLY_API_TOKEN_TEST')
+     credentials('FLY_API_TOKEN_TEST')
     }
  
     tools {
@@ -18,7 +18,7 @@ pipeline {
         stage('Install Fly.io') {
             steps {
                 echo 'Installing Fly.io...'
-                withCredentials([string(credentialsId: 'FLY_API_TOKEN_TEST', variable: 'FLY_API_TOKEN_TEST')]) {
+                withCredentials([string(credentialsId: 'FLY_API_TOKEN_TEST')]) {
                     sh '''
                         curl -L https://fly.io/install.sh | sh
                         export FLYCTL_INSTALL="/var/jenkins_home/.fly"
