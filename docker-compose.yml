@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mailservice:
+    build: ./mailservice
+    ports:
+      - "8001:3000"
+
+  userservice:
+    build: ./userservice
+    ports:
+      - "8002:3000"
+
+  database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: dbDevops
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
