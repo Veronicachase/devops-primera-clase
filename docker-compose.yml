@@ -1,22 +1,33 @@
-version: '3'
+version: '3.1'
+
 services:
-  mailservice:
-    build: ./mailservice
-    ports:
-      - "8001:3000"
 
-  userservice:
-    build: ./userservice
+  wordpress:
+    image: wordpress
+    restart: always
     ports:
-      - "8002:3000"
-
-  database:
-    image: mysql
+      - 8085:80
     environment:
-      MYSQL_ROOT_PASSWORD: 12345
-      MYSQL_DATABASE: dbDevops
+      MYSQL_DATABASE: mywordpress
+      MYSQL_USER: Veronica
+      MYSQL_PASSWORD: 12345
+      MYSQL_RANDOM_ROOT_PASSWORD: '12345'
     volumes:
-      - db_data:/var/lib/mysql
+      - db:/var/lib/mysql
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: mywordpress
+      MYSQL_USER: Veronica
+      MYSQL_PASSWORD: 12345
+      MYSQL_RANDOM_ROOT_PASSWORD: '12345'
+    volumes:
+      - db:/var/lib/mysql
 
 volumes:
-  db_data:
+  wordpress:
+  db:
+
+
